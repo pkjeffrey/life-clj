@@ -1,7 +1,7 @@
 (ns life-clj.core)
 
-(def width 15)
-(def height 6)
+(def width (atom 10))
+(def height (atom 10))
 
 (def under-population 1)
 (def over-population 4)
@@ -9,7 +9,7 @@
 
 (defn wrap-cell
   [cell]
-  [(mod (cell 0) width) (mod (cell 1) height)])
+  [(mod (cell 0) @width) (mod (cell 1) @height)])
 
 (defn neighbours
   "Returns a lazy sequence of cells that are neighbours to cell."
